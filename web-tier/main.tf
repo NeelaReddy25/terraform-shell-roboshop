@@ -4,8 +4,8 @@ module "web" {
   name = "web"
 
   instance_type          = "t3.micro"
-  vpc_security_group_ids = ["sg-0cd5626364cf1e071"] #replace your SG
-  subnet_id = "subnet-0ff7989885902f665" #replace your Subnet
+  vpc_security_group_ids = [var.sg_id] #replace your SG
+  subnet_id = var.public_subnet_id #replace your Subnet
   ami = data.aws_ami.ami_info.id
   user_data = file("web.sh")
   tags = {

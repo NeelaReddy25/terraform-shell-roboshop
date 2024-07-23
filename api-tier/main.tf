@@ -4,8 +4,8 @@ module "catalogue" {
   name = "catalogue"
 
   instance_type          = "t3.micro"
-  vpc_security_group_ids = ["sg-0cd5626364cf1e071"] #replace your SG
-  subnet_id = "subnet-0ff7989885902f665" #replace your Subnet
+  vpc_security_group_ids = [var.sg_id] #replace your SG
+  subnet_id = var.public_subnet_id #replace your Subnet
   ami = data.aws_ami.ami_info.id
   user_data = file("01-catalogue.sh")
   tags = {
@@ -19,8 +19,8 @@ module "user" {
   name = "user"
 
   instance_type          = "t3.micro"
-  vpc_security_group_ids = ["sg-0cd5626364cf1e071"] #replace your SG
-  subnet_id = "subnet-0ff7989885902f665" #replace your Subnet
+  vpc_security_group_ids = [var.sg_id] #replace your SG
+  subnet_id = var.public_subnet_id #replace your Subnet
   ami = data.aws_ami.ami_info.id
   user_data = file("02-user.sh")
   tags = {
@@ -34,8 +34,8 @@ module "cart" {
   name = "cart"
 
   instance_type          = "t3.micro"
-  vpc_security_group_ids = ["sg-0cd5626364cf1e071"] #replace your SG
-  subnet_id = "subnet-0ff7989885902f665" #replace your Subnet
+  vpc_security_group_ids = [var.sg_id] #replace your SG
+  subnet_id = var.public_subnet_id #replace your Subnet
   ami = data.aws_ami.ami_info.id
   user_data = file("03-cart.sh")
   tags = {
@@ -49,8 +49,8 @@ module "shipping" {
   name = "shipping"
 
   instance_type          = "t3.micro"
-  vpc_security_group_ids = ["sg-0cd5626364cf1e071"] #replace your SG
-  subnet_id = "subnet-0ff7989885902f665" #replace your Subnet
+  vpc_security_group_ids = [var.sg_id] #replace your SG
+  subnet_id = var.public_subnet_id #replace your Subnet
   ami = data.aws_ami.ami_info.id
   user_data = file("04-shipping.sh")
   tags = {
@@ -64,8 +64,8 @@ module "payment" {
   name = "payment"
 
   instance_type          = "t3.micro"
-  vpc_security_group_ids = ["sg-0cd5626364cf1e071"] #replace your SG
-  subnet_id = "subnet-0ff7989885902f665" #replace your Subnet
+  vpc_security_group_ids = [var.sg_id] #replace your SG
+  subnet_id = var.public_subnet_id #replace your Subnet
   ami = data.aws_ami.ami_info.id
   user_data = file("05-payment.sh")
   tags = {
@@ -79,8 +79,8 @@ module "dispatch" {
   name = "dispatch"
 
   instance_type          = "t3.micro"
-  vpc_security_group_ids = ["sg-0cd5626364cf1e071"] #replace your SG
-  subnet_id = "subnet-0ff7989885902f665" #replace your Subnet
+  vpc_security_group_ids = [var.sg_id] #replace your SG
+  subnet_id = var.public_subnet_id #replace your Subnet
   ami = data.aws_ami.ami_info.id
   user_data = file("06-dispatch")
   tags = {

@@ -4,8 +4,8 @@ module "mongodb" {
   name = "mongodb"
 
   instance_type          = "t3.micro"
-  vpc_security_group_ids = ["sg-0cd5626364cf1e071"] #replace your SG
-  subnet_id = "subnet-0ff7989885902f665" #replace your Subnet
+  vpc_security_group_ids = [var.sg_id] #replace your SG
+  subnet_id = var.public_subnet_id #replace your Subnet
   ami = data.aws_ami.ami_info.id
   user_data = file("01-mongodb.sh")
   tags = {
@@ -19,8 +19,8 @@ module "redis" {
   name = "redis"
 
   instance_type          = "t3.micro"
-  vpc_security_group_ids = ["sg-0cd5626364cf1e071"] #replace your SG
-  subnet_id = "subnet-0ff7989885902f665" #replace your Subnet
+  vpc_security_group_ids = [var.sg_id] #replace your SG
+  subnet_id = var.public_subnet_id #replace your Subnet
   ami = data.aws_ami.ami_info.id
   user_data = file("02-redis.sh")
   tags = {
@@ -34,8 +34,8 @@ module "mysql" {
   name = "mysql"
 
   instance_type          = "t3.micro"
-  vpc_security_group_ids = ["sg-0cd5626364cf1e071"] #replace your SG
-  subnet_id = "subnet-0ff7989885902f665" #replace your Subnet
+  vpc_security_group_ids = [var.sg_id] #replace your SG
+  subnet_id = var.public_subnet_id #replace your Subnet
   ami = data.aws_ami.ami_info.id
   user_data = file("03-mysql.sh")
   tags = {
@@ -49,8 +49,8 @@ module "rabbitmq" {
   name = "rabbitmq"
 
   instance_type          = "t3.micro"
-  vpc_security_group_ids = ["sg-0cd5626364cf1e071"] #replace your SG
-  subnet_id = "subnet-0ff7989885902f665" #replace your Subnet
+  vpc_security_group_ids = [var.sg_id] #replace your SG
+  subnet_id = var.public_subnet_id #replace your Subnet
   ami = data.aws_ami.ami_info.id
   user_data = file("04-rabbitmq.sh")
   tags = {
