@@ -33,7 +33,7 @@ module "mysql" {
 
   name = "mysql"
 
-  instance_type          = "t3.micro"
+  instance_type          = "t3.medium"
   vpc_security_group_ids = [var.sg_id] #replace your SG
   subnet_id = var.public_subnet_id #replace your Subnet
   ami = data.aws_ami.ami_info.id
